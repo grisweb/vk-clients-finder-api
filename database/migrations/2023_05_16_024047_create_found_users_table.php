@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('found_users', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('vk_access_token')->nullable();
-            $table->rememberToken();
+            $table->integer('vk_id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->boolean('is_closed');
+            $table->dateTime('last_seen')->nullable();
+            $table->foreignId('task_id')->constrained('search_tasks');
+            $table->string('img_url')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('found_users');
     }
 };

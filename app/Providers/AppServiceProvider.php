@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\ClientsFinder;
+use App\Services\VkApi;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Password::defaults(fn() => Password::min(8)->mixedCase()->letters()->numbers());
     }
+
+    public array $singletons = [
+        VkApi::class => VkApi::class,
+        ClientsFinder::class => ClientsFinder::class,
+    ];
 }
