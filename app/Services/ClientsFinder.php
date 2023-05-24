@@ -42,23 +42,4 @@ class ClientsFinder
 
         return $clients;
     }
-
-    protected function getMaleNames(): array
-    {
-        $filePath = resource_path('data/male-names.csv');
-        return $this->readFileArray($filePath);
-    }
-
-    protected function readFileArray($filePath): array
-    {
-        $file = fopen($filePath, "r");
-        $data = [];
-        while (($item = fgetcsv($file, 200)) !== false) {
-            if ($item[0]) {
-                $data[] = $item[0];
-            }
-        }
-
-        return $data;
-    }
 }
