@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\SearchTaskRepository;
 use App\Services\ClientsFinder;
 use App\Services\VkApi;
 use Illuminate\Support\ServiceProvider;
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
     public array $singletons = [
         VkApi::class => VkApi::class,
         ClientsFinder::class => ClientsFinder::class,
+        SearchTaskRepository::class => SearchTaskRepository::class
     ];
 }

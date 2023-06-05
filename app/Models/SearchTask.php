@@ -110,7 +110,7 @@ class SearchTask extends Model
             ->toArray();
     }
 
-    public function foundUsers (): HasMany
+    public function foundUsers(): HasMany
     {
         return $this->hasMany(FoundUser::class, 'task_id');
     }

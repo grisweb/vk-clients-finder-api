@@ -70,6 +70,24 @@ class VkApi
     /**
      * @throws RequestException
      */
+    public function getCity($id) {
+        $response = $this->api->get('/database.getCity', [
+            'city_ids' => [$id],
+            ...$this->baseParams
+        ]);
+
+        $response->throwUnlessStatus(200);
+
+        if(!isset($response['response'][0])) {
+            $response->throw();
+        }
+
+        return $response['response'][0];
+    }
+
+    /**
+     * @throws RequestException
+     */
     public function getUniversities(int $cityId, ?string $query = null): array|null
     {
         $response = $this->api->get('/database.getUniversities', [
