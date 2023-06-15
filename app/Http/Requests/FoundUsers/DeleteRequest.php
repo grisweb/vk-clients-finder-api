@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\SearchTasks\FoundUsers;
+namespace App\Http\Requests\FoundUsers;
 
 use App\Http\Requests\BaseRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class IndexRequest extends BaseRequest
+class DeleteRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class IndexRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required|exists:found_users,uuid'
         ];
     }
 }

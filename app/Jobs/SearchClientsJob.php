@@ -42,7 +42,7 @@ class SearchClientsJob implements ShouldQueue
         $vkApi->setAccessToken($task->user->vk_access_token);
 
         try {
-            $clients = $clientsFinder->find($taskParams, $task->getAttribute('keywords'));
+            $clients = $clientsFinder->find($taskParams, $task->getAttribute('keywords')['*']);
 
             $clients->each(function ($item) use ($task) {
                 $attributes = [

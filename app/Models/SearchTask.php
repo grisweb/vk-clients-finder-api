@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -65,6 +66,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|SearchTask whereTitle($value)
  * @property string $uuid
  * @method static Builder|SearchTask whereUuid($value)
+ * @property-read Collection<int, FoundUser> $foundUsers
+ * @property-read int|null $found_users_count
  * @mixin Eloquent
  */
 class SearchTask extends Model

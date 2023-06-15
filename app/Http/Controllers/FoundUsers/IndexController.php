@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\SearchTasks\FoundUsers;
+namespace App\Http\Controllers\FoundUsers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SearchTasks\FoundUsers\IndexRequest;
+use App\Http\Requests\FoundUsers\IndexRequest;
 use App\Http\Resources\SearchTasks\FoundUserCollection;
-use App\Models\FoundUser;
 use App\Models\SearchTask;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;

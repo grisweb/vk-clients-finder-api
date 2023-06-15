@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\FoundUser
@@ -33,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|FoundUser whereTaskId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FoundUser whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FoundUser whereVkId($value)
+ * @property-read SearchTask $task
  * @mixin \Eloquent
  */
 class FoundUser extends Model
@@ -49,4 +51,9 @@ class FoundUser extends Model
         'last_seen',
         'img_url'
     ];
+
+    public function task(): BelongsTo
+    {
+        return $this->belongsTo(SearchTask::class);
+    }
 }

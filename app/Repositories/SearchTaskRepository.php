@@ -23,7 +23,7 @@ class SearchTaskRepository
         $result = [];
 
         if ($searchTask->city) {
-            $result['city'] = $this->vkApi->getCity($searchTask->city);
+            $result['city'] = $this->vkApi->getCity($searchTask->city)['title'];
         }
 
         $result = [
@@ -35,8 +35,8 @@ class SearchTaskRepository
             'sex' => $searchTask->sex,
             'status' => $searchTask->status,
             'has_photo' => $searchTask->has_photo,
+            ...$result,
             'keywords' => $searchTask->keywords['*'],
-            ...$result
         ];
 
         return collect($result)->filter()->toArray();
